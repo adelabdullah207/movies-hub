@@ -1,5 +1,8 @@
 {
   "name": "movieshub",
+  "homepage": "https://adelabdullah207.github.io/movies-hub/",
+  "description": "A React application that provides a comprehensive platform for movie enthusiasts to explore, discover, and enjoy a wide range of films. It features a user-friendly interface, advanced search capabilities, and detailed movie information.",
+  "author": "Adel Abdullah",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,7 +15,6 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "homepage": "https://adelabdullah207.github.io/movies-hub/",
     "@reduxjs/toolkit": "^2.0.1",
     "framer-motion": "^11.0.3",
     "gh-pages": "^6.3.0",
