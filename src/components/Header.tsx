@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Film, Search, User, ChevronDown, Menu, X, Heart } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Genre, Movie } from '../types/Movie';
-import { movieApi } from '../services/movieApi';
-import { useAppSelector } from '../hooks/redux';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Film, Search, User, ChevronDown, Menu, X, Heart } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Genre, Movie } from "../types/Movie";
+import { movieApi } from "../services/movieApi";
+import { useAppSelector } from "../hooks/redux";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState<Movie[]>([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const [genres, setGenres] = useState<Genre[]>([]);
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         const response = await movieApi.getGenres();
         setGenres(response.genres);
       } catch (error) {
-        console.error('Error fetching genres:', error);
+        console.error("Error fetching genres:", error);
       }
     };
 
@@ -40,7 +40,7 @@ const Header: React.FC = () => {
           const response = await movieApi.searchMovies(searchQuery.trim());
           setSearchSuggestions(response.results.slice(0, 5));
         } catch (error) {
-          console.error('Error fetching search suggestions:', error);
+          console.error("Error fetching search suggestions:", error);
           setSearchSuggestions([]);
         } finally {
           setIsLoadingSuggestions(false);
@@ -60,14 +60,14 @@ const Header: React.FC = () => {
     if (searchQuery.trim()) {
       navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
       setIsSearchOpen(false);
-      setSearchQuery('');
+      setSearchQuery("");
     }
   };
 
   const handleSuggestionClick = (movie: Movie) => {
     navigate(`/movie/${movie.id}`);
     setIsSearchOpen(false);
-    setSearchQuery('');
+    setSearchQuery("");
   };
 
   const formatYear = (dateString: string) => {
@@ -101,9 +101,9 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
-              to="/"
+              to="/movies-hub/"
               className={`text-lg font-medium transition-colors ${
-                isActive('/') ? 'text-red-400' : 'text-white hover:text-red-400'
+                isActive("/") ? "text-red-400" : "text-white hover:text-red-400"
               }`}
             >
               Home
@@ -116,7 +116,11 @@ const Header: React.FC = () => {
                 className="flex items-center gap-2 text-lg font-medium text-white hover:text-red-400 transition-colors"
               >
                 Categories
-                <ChevronDown className={`w-4 h-4 transition-transform ${isCategoriesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform ${
+                    isCategoriesOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
 
               <AnimatePresence>
@@ -147,7 +151,9 @@ const Header: React.FC = () => {
             <Link
               to="/wishlist"
               className={`text-lg font-medium transition-colors ${
-                isActive('/wishlist') ? 'text-red-400' : 'text-white hover:text-red-400'
+                isActive("/wishlist")
+                  ? "text-red-400"
+                  : "text-white hover:text-red-400"
               }`}
             >
               Wishlist
@@ -156,7 +162,9 @@ const Header: React.FC = () => {
             <Link
               to="/contact"
               className={`text-lg font-medium transition-colors ${
-                isActive('/contact') ? 'text-red-400' : 'text-white hover:text-red-400'
+                isActive("/contact")
+                  ? "text-red-400"
+                  : "text-white hover:text-red-400"
               }`}
             >
               Contact Us
@@ -186,7 +194,10 @@ const Header: React.FC = () => {
                     className="absolute top-full right-0 mt-2 w-80 bg-gray-900/95 backdrop-blur-md rounded-xl border border-white/10 shadow-2xl"
                   >
                     <div className="p-4">
-                      <form onSubmit={handleSearchSubmit} className="relative mb-3">
+                      <form
+                        onSubmit={handleSearchSubmit}
+                        className="relative mb-3"
+                      >
                         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                         <input
                           type="text"
@@ -208,7 +219,9 @@ const Header: React.FC = () => {
 
                       {searchSuggestions.length > 0 && (
                         <div className="space-y-2">
-                          <p className="text-gray-400 text-xs font-medium">Suggestions:</p>
+                          <p className="text-gray-400 text-xs font-medium">
+                            Suggestions:
+                          </p>
                           {searchSuggestions.map((movie) => (
                             <motion.div
                               key={movie.id}
@@ -219,7 +232,10 @@ const Header: React.FC = () => {
                               <div className="w-8 h-10 rounded overflow-hidden bg-gray-800 flex-shrink-0">
                                 {movie.poster_path ? (
                                   <img
-                                    src={movieApi.getImageUrl(movie.poster_path, 'w92')}
+                                    src={movieApi.getImageUrl(
+                                      movie.poster_path,
+                                      "w92"
+                                    )}
                                     alt={movie.title}
                                     className="w-full h-full object-cover"
                                   />
@@ -230,17 +246,25 @@ const Header: React.FC = () => {
                                 )}
                               </div>
                               <div className="flex-1 min-w-0">
-                                <p className="text-white text-sm font-medium truncate">{movie.title}</p>
-                                <p className="text-gray-400 text-xs">{formatYear(movie.release_date)}</p>
+                                <p className="text-white text-sm font-medium truncate">
+                                  {movie.title}
+                                </p>
+                                <p className="text-gray-400 text-xs">
+                                  {formatYear(movie.release_date)}
+                                </p>
                               </div>
                             </motion.div>
                           ))}
                         </div>
                       )}
 
-                      {searchQuery.length >= 2 && searchSuggestions.length === 0 && !isLoadingSuggestions && (
-                        <p className="text-gray-400 text-sm text-center py-4">No movies found</p>
-                      )}
+                      {searchQuery.length >= 2 &&
+                        searchSuggestions.length === 0 &&
+                        !isLoadingSuggestions && (
+                          <p className="text-gray-400 text-sm text-center py-4">
+                            No movies found
+                          </p>
+                        )}
                     </div>
                   </motion.div>
                 )}
@@ -261,7 +285,7 @@ const Header: React.FC = () => {
                     animate={{ scale: 1 }}
                     className="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white text-xs rounded-full flex items-center justify-center font-bold"
                   >
-                    {wishlistCount > 99 ? '99+' : wishlistCount}
+                    {wishlistCount > 99 ? "99+" : wishlistCount}
                   </motion.span>
                 )}
               </motion.button>
@@ -294,7 +318,11 @@ const Header: React.FC = () => {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden p-2 text-white"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -304,7 +332,7 @@ const Header: React.FC = () => {
           {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
+              animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               className="md:hidden mt-4 pt-4 border-t border-white/10"
             >
@@ -313,7 +341,7 @@ const Header: React.FC = () => {
                   to="/"
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-lg font-medium transition-colors ${
-                    isActive('/') ? 'text-red-400' : 'text-white'
+                    isActive("/") ? "text-red-400" : "text-white"
                   }`}
                 >
                   Home
@@ -329,7 +357,7 @@ const Header: React.FC = () => {
                   to="/wishlist"
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-lg font-medium transition-colors ${
-                    isActive('/wishlist') ? 'text-red-400' : 'text-white'
+                    isActive("/wishlist") ? "text-red-400" : "text-white"
                   }`}
                 >
                   Wishlist ({wishlistCount})
@@ -338,7 +366,7 @@ const Header: React.FC = () => {
                   to="/contact"
                   onClick={() => setIsMenuOpen(false)}
                   className={`text-lg font-medium transition-colors ${
-                    isActive('/contact') ? 'text-red-400' : 'text-white'
+                    isActive("/contact") ? "text-red-400" : "text-white"
                   }`}
                 >
                   Contact Us

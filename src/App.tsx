@@ -24,7 +24,7 @@ function AppContent() {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       {!isMovieDetailsPage && <Header />}
       <Routes>
-        <Route path="/movies-hub" element={<Home />} />
+        <Route path="/movies-hub/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/category/:genreId" element={<CategoryPage />} />

@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Film, Github, Twitter, Instagram, Mail } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Film, Github, Twitter, Instagram, Mail } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -26,7 +26,8 @@ const Footer: React.FC = () => {
               </h2>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
-              Your ultimate destination for discovering amazing movies. Explore trending, popular, and top-rated films from around the world.
+              Your ultimate destination for discovering amazing movies. Explore
+              trending, popular, and top-rated films from around the world.
             </p>
             <div className="flex items-center gap-4">
               <motion.a
@@ -65,27 +66,42 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  to="/movies-hub/"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link to="/search" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  to="/search"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Search Movies
                 </Link>
               </li>
               <li>
-                <Link to="/wishlist" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  to="/wishlist"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   My Wishlist
                 </Link>
               </li>
               <li>
-                <Link to="/category/28" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  to="/category/28"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Action Movies
                 </Link>
               </li>
               <li>
-                <Link to="/category/35" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  to="/category/35"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Comedy Movies
                 </Link>
               </li>
@@ -97,27 +113,42 @@ const Footer: React.FC = () => {
             <h3 className="text-white font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
+                <Link
+                  to="/contact"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Contact Us
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Help Center
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   FAQ
                 </a>
               </li>
